@@ -1,0 +1,232 @@
+{
+	"info": {
+		"_postman_id": "4e5a41eb-bdc0-4050-bd86-d6192911d829",
+		"name": "Blacklist_E1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12702971"
+	},
+	"item": [
+		{
+			"name": "Case1_add_email_successfull",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "maxima_seguridad",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"emailataqueruso@hacker.com\",\n    \"blocked_reason\": \"Intento de ataque trojan\",\n    \"app_uuid\":\"c201b443-6d1c-4e35-8835-ad65c71d44c2\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://mvtqnblacklistv1-env.eba-bnbwpmdx.us-east-1.elasticbeanstalk.com/blacklist",
+					"protocol": "http",
+					"host": [
+						"mvtqnblacklistv1-env",
+						"eba-bnbwpmdx",
+						"us-east-1",
+						"elasticbeanstalk",
+						"com"
+					],
+					"path": [
+						"blacklist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Case2_add_email_wrong_token",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "dfsdf",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"aaa\",\n    \"blocked_reason\": \"aaaa\",\n    \"app_uuid\":\"5\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://mvtqnblacklistv1-env.eba-bnbwpmdx.us-east-1.elasticbeanstalk.com/blacklist",
+					"protocol": "http",
+					"host": [
+						"mvtqnblacklistv1-env",
+						"eba-bnbwpmdx",
+						"us-east-1",
+						"elasticbeanstalk",
+						"com"
+					],
+					"path": [
+						"blacklist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Case3_add_email_repeated_uuid",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "maxima_seguridad",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"aaa\",\n    \"blocked_reason\": \"aaaa\",\n    \"app_uuid\":\"5\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://mvtqnblacklistv1-env.eba-bnbwpmdx.us-east-1.elasticbeanstalk.com/blacklist",
+					"protocol": "http",
+					"host": [
+						"mvtqnblacklistv1-env",
+						"eba-bnbwpmdx",
+						"us-east-1",
+						"elasticbeanstalk",
+						"com"
+					],
+					"path": [
+						"blacklist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Case4_search_by_email_successful",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "maxima_seguridad",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://mvtqnblacklistv1-env.eba-bnbwpmdx.us-east-1.elasticbeanstalk.com/blacklist/emailataqueruso@hacker.com",
+					"protocol": "http",
+					"host": [
+						"mvtqnblacklistv1-env",
+						"eba-bnbwpmdx",
+						"us-east-1",
+						"elasticbeanstalk",
+						"com"
+					],
+					"path": [
+						"blacklist",
+						"emailataqueruso@hacker.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Case4_search_by_email_wrong_token",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "maxima_seguridadsd",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://mvtqnblacklistv1-env.eba-bnbwpmdx.us-east-1.elasticbeanstalk.com/blacklist/emailataqueruso@hacker.com",
+					"protocol": "http",
+					"host": [
+						"mvtqnblacklistv1-env",
+						"eba-bnbwpmdx",
+						"us-east-1",
+						"elasticbeanstalk",
+						"com"
+					],
+					"path": [
+						"blacklist",
+						"emailataqueruso@hacker.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Case4_search_by_email_email_not_found",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "maxima_seguridad",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://mvtqnblacklistv1-env.eba-bnbwpmdx.us-east-1.elasticbeanstalk.com/blacklist/emailataqueruso@hacker.com1",
+					"protocol": "http",
+					"host": [
+						"mvtqnblacklistv1-env",
+						"eba-bnbwpmdx",
+						"us-east-1",
+						"elasticbeanstalk",
+						"com"
+					],
+					"path": [
+						"blacklist",
+						"emailataqueruso@hacker.com1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
